@@ -8,13 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-int main(int argc, const char * argv[]) {
+void stringManipulation() {
+    int inputNum;
     // 255 unit long array of characters
     char inputChars[255];
     
-    printf("Input a string: ");
-    // limit input to max 255 characters
+    printf("Input a number: ");
+    scanf("%d", &inputNum);
+    
+    //flush
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+    
+    printf("Input a text: ");
     fgets(inputChars, 255, stdin);
+    
     
     // print as a c string
     printf("Your string is %s\n", inputChars);
@@ -24,30 +32,44 @@ int main(int argc, const char * argv[]) {
     // remove last \n
     inputString = [inputString substringToIndex:[inputString length] - 1];
     
-    NSString *upper = [inputString uppercaseString];
-    NSString *lower = [inputString lowercaseString];
-    int num = inputString.intValue;
-    NSString *canada = [inputString stringByAppendingString:@", eh?"];
-    NSString *replace = [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-    NSInteger length = inputString.length;
-
+    NSString *output;
     
-    
-    // print NSString object
-    NSLog(@"Input was: %@", inputString);
-    NSLog(@"1. uppercase: %@", upper);
-    NSLog(@"2. lowercase: %@", lower);
-    NSLog(@"3. numberize: %d", num);
-    NSLog(@"4. canadianize: %@", canada);
-    
-    if([inputString hasSuffix:@"?"]){
-        NSLog(@"5. respond: %@", @"I don't know");
-    } else if ([inputString hasSuffix:@"!"]){
-        NSLog(@"5. respond: %@", @"Whoa, calm down!");
+    switch(inputNum){
+        case 1:
+            output = [inputString uppercaseString];
+        case 2:
+            output = [inputString lowercaseString];
+        case 3:
+            output = [NSString stringWithFormat:@"%d",inputString.intValue];
+        case 4:
+            output = [inputString stringByAppendingString:@", eh?"];
+        case 5:
+            if([inputString hasSuffix:@"?"]){
+                output = @"I don't know";
+            } else if ([inputString hasSuffix:@"!"]){
+                output = @"Whoa, calm down!";
+            }
+        case 6:
+            inputString = [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"];
     }
     
-    NSLog(@"6. De-Space-It: %@", replace);
-    NSLog(@"word count: %d", length);
+    // print NSString object
+    NSLog(@"operation num: %d", inputNum);
+    NSLog(@"Input was: %@", inputString);
+    
+    NSLog(@"Result: %@", output);
+    NSLog(@"Input address: %p", inputString);
+    NSLog(@"Result address: %p", output);
+}
+
+
+
+int main(int argc, const char * argv[]) {
+    int i = 0;
+    while(i == 0) {
+        stringManipulation();
+    }
     
     return 0;
 }
+
