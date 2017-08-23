@@ -39,11 +39,12 @@ int main(int argc, const char * argv[]) {
                 NSInteger index = [[inputCollector inputForPrompt: @"Input Id of the contact you want to show"] intValue];
                 [contactList printDetail:index];
             } else if([[[menuInput componentsSeparatedByString:@" "] objectAtIndex:0] isEqualToString:@"find"]) {
-//                if([[menuInput componentsSeparatedByString:@" "] objectAtIndex:1] == 0){
-//                    NSLog(@"input search term along with a 'find'");
-//                }
-                NSString* keyword = [[menuInput componentsSeparatedByString:@" "] objectAtIndex:1];
-                [contactList search: keyword];
+                if([[menuInput componentsSeparatedByString:@" "] count] < 2){
+                    NSLog(@"input search term along with a 'find'");
+                } else{
+                    NSString* keyword = [[menuInput componentsSeparatedByString:@" "] objectAtIndex:1];
+                    [contactList search: keyword];
+                }
             } else if([menuInput isEqualToString:@"history"]) {
                 [inputCollector showHistory];
             }
