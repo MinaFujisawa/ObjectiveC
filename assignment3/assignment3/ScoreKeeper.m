@@ -11,7 +11,6 @@
 @implementation ScoreKeeper
 
 - (NSString*) getScoreString {
-//    NSInteger percentage = _countRight / (_countWrong + _countRight) *100;
     NSInteger percentage = (100 * _countRight) / (_countWrong + _countRight);
     return [NSString stringWithFormat:@"score: %ld right, %ld wrong ---- %ld %%", _countRight, _countWrong, percentage];
 }

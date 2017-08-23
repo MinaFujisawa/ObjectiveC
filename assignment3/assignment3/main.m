@@ -20,6 +20,7 @@ int main(int argc, const char * argv[]) {
 
         while(gameOn){
             AdditionQuestion *aq = [[AdditionQuestion alloc] init];
+            NSLog(@"%@", [aq question]);
             NSLog(@"%@", aq.question);
             
             //NSString* input = InputHandler.getString;
@@ -32,8 +33,9 @@ int main(int argc, const char * argv[]) {
             }
             
             //check the answer
-            if(aq.answer == [input intValue]){
-                sk.countRight++;
+            if([aq answer] == [input intValue]){
+                //sk.countRight++;
+                [sk setCountRight:[sk countRight] + 1];
                 NSLog(@"Right!");
             } else{
                 sk.countWrong++;

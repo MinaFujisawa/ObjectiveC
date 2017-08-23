@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface AdditionQuestion : NSObject
-@property  NSString* question;
-@property  NSInteger answer;
+@property  (nonatomic) NSString* question;
+@property  (assign) NSInteger answer;
 @end

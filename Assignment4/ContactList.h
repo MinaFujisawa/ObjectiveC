@@ -13,5 +13,8 @@
 @property (strong, nonatomic) NSMutableArray* contacts;
 -(void)addContact:(Contact *)newContact;
 -(NSInteger) getLength;
--(void) printList:(Contact *)contact index:(NSInteger)index;
+-(void) printList:(NSInteger)index;
+-(void) printDetail:(NSInteger)index;
+-(BOOL) isDuplicated:(NSString *)searchword;
+-(void) search:(NSString *)searchword;
 @end
