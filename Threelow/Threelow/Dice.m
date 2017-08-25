@@ -11,6 +11,7 @@
 @implementation Dice
 - (instancetype)init{
     if(self = [super init]){
+        _isHeld = NO;
         [self throwDice];
     }
     return self;
