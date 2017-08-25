@@ -17,6 +17,6 @@
 }
 
 - (void) throwDice{
-    self.currentValue = arc4random_uniform(6);
+    self.currentValue = arc4random_uniform(6)+1;
 }
 @end
