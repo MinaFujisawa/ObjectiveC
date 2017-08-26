@@ -11,10 +11,12 @@
 @interface GameController : NSObject
 @property (nonatomic, strong) NSMutableArray *diceArr;
 @property (nonatomic, strong) NSMutableArray *heldDiceArr;
-- (void) holdDie:(NSInteger)i;
+@property (nonatomic) const NSInteger MAX_ROLL_TIMES;
+@property NSInteger rollCount;
+-(void) holdDie:(NSInteger)i;
 -(void) resetDice;
--(void) printRolled;
--(void) printHeld;
+-(void) printStatus;
+-(void) printScore;
 -(void) printAvarableDiceIndex;
 -(void) printAvarableDiceIndex:(NSString*) string;
 @end

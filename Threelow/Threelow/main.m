@@ -16,21 +16,21 @@ int main(int argc, const char * argv[]) {
         GameController *gc = [GameController new];
         NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
         
-        NSLog(@"input roll");
+        NSLog(@"input roll (%ld times left)", gc.MAX_ROLL_TIMES - gc.rollCount);
+        
         while([gc.heldDiceArr count] < 5){
             NSString *input = [InputHandler getString];
             if([input isEqualToString:@"roll"]){
+                
                 //reset diceArr
                 [gc.diceArr removeAllObjects];
                 
                 //roll dice
-                for(int i = 0; i < 5 - gc.heldDiceArr.count; i++){
+                for(int i = 0; i < gc.MAX_ROLL_TIMES
+                    - gc.heldDiceArr.count; i++){
                     [gc.diceArr addObject:[Dice new]];
                 }
-                
-                [gc printRolled];
-                [gc printHeld];
-                
+                [gc printStatus];
                 
                 //hold dice once
                 [gc printAvarableDiceIndex];
@@ -38,9 +38,14 @@ int main(int argc, const char * argv[]) {
                 if(0 < [input intValue] && [input intValue] < gc.diceArr.count+1){
                     [gc holdDie:[input intValue]];
                     [[gc diceArr] removeObjectAtIndex:[input intValue]-1];
-                    [gc printRolled];
-                    [gc printHeld];
-                    [gc printAvarableDiceIndex:@"OR input roll"];
+                    [gc printStatus];
+                    [gc printScore];
+                    
+                    //Don't print status when game is finished
+                    if(gc.heldDiceArr.count != gc.MAX_ROLL_TIMES){
+                        [gc printAvarableDiceIndex:[NSString stringWithFormat:@"OR input roll (%ld times left)",
+                                                    gc.MAX_ROLL_TIMES - gc.rollCount]];
+                    }
                 } else{
                     [gc printAvarableDiceIndex];                }
             
@@ -49,16 +54,21 @@ int main(int argc, const char * argv[]) {
                 if(0 < [input intValue] && [input intValue] < gc.diceArr.count+1){
                     [gc holdDie:[input intValue]];
                     [[gc diceArr] removeObjectAtIndex:[input intValue]-1];
-                    [gc printRolled];
-                    [gc printHeld];
-                    [gc printAvarableDiceIndex:@"OR input roll"];
+                    [gc printStatus];
+                    [gc printScore];
+                    
+                    //Don't print status when game is finished
+                    if(gc.heldDiceArr.count != gc.MAX_ROLL_TIMES){
+                        [gc printAvarableDiceIndex:[NSString stringWithFormat:@"OR input roll (%ld times left)",
+                                                    gc.MAX_ROLL_TIMES - gc.rollCount]];
+                    }
                 } else{
                     [gc printAvarableDiceIndex];
                 }
             } else if ([input isEqualToString:@"reset"]){
                 [gc resetDice];
-                [gc printRolled];
-                [gc printHeld];
+                [gc printStatus];
+                [gc printScore];
             }
         }
     }
