@@ -15,4 +15,6 @@
 -(void) resetDice;
 -(void) printRolled;
 -(void) printHeld;
+-(void) printAvarableDiceIndex;
+-(void) printAvarableDiceIndex:(NSString*) string;
 @end

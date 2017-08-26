@@ -31,8 +31,8 @@
 }
 
 -(void) resetDice {
+    [_heldDiceArr removeAllObjects];
     for(int i = 0; i < _diceArr.count; i++){
-        [_heldDiceArr removeObject:[_diceArr objectAtIndex:i]];
         [[_diceArr objectAtIndex:i] setIsHeld:NO];
     }
 }
@@ -52,6 +52,22 @@
         printf("%s ", [[[_heldDiceArr objectAtIndex:i] currentValueSymbol] UTF8String]);
     }
     printf("\n");
+}
+
+-(void) printAvarableDiceIndex {
+    if (_diceArr.count == 1) {
+        NSLog(@"Input dice index 1 to hold the dice");
+    } else{
+        NSLog(@"Input dice index range of 1 to %ld to hold the dice", _diceArr.count);
+    }
+}
+
+-(void) printAvarableDiceIndex:(NSString*) string {
+    if (_diceArr.count == 1) {
+        NSLog(@"Input dice index 1 to hold the dice %@", string);
+    } else{
+        NSLog(@"Input dice index range of 1 to %ld to hold the dice %@", _diceArr.count, string);
+    }
 }
 
 -(void) printScore {
