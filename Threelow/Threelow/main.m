@@ -14,37 +14,34 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         GameController *gc = [GameController new];
-        Dice *dice1 = [Dice new];
-        Dice *dice2 = [Dice new];
-        Dice *dice3 = [Dice new];
-        Dice *dice4 = [Dice new];
-        Dice *dice5 = [Dice new];
-        Dice *dice6 = [Dice new];
-        [gc.diceArr addObject:dice1];
-        [gc.diceArr addObject:dice2];
-        [gc.diceArr addObject:dice3];
-        [gc.diceArr addObject:dice4];
-        [gc.diceArr addObject:dice5];
-        [gc.diceArr addObject:dice6];
         
         NSLog(@"input roll");
-        while(1){
+        while([gc.heldDiceArr count] < 5){
             NSString *input = [InputHandler getString];
             if([input isEqualToString:@"roll"]){
+                //reset diceArr
+                for(int i = 0; i < gc.diceArr.count; i++){
+                   [gc.diceArr removeObjectAtIndex:i];
+                }
+                for(int i = 0; i < 5 - gc.heldDiceArr.count; i++){
+                    [gc.diceArr addObject:[Dice new]];
+                }
                 
-                NSLog(@"dice1 : %ld", dice1.currentValue);
-                NSLog(@"dice2 : %ld", dice2.currentValue);
-                NSLog(@"dice3 : %ld", dice3.currentValue);
-                NSLog(@"dice4 : %ld", dice4.currentValue);
-                NSLog(@"dice5 : %ld", dice5.currentValue);
-                NSLog(@"dice6 : %ld", dice6.currentValue);
+                [gc printRolled];
+                [gc printHeld];
                 
-                NSLog(@"input dice indexes to hold");
-                
-            } else if(1 < [input intValue] && [input intValue] <= 6){
-                [gc holdDie:[input intValue]];
-            }
+                NSLog(@"Input dice indexe to hold");
+                NSString *inputNum = [InputHandler getString];
+                //TODO:loop
+                if(0 < [inputNum intValue] && [inputNum intValue] <= 5){
+                    [gc holdDie:[inputNum intValue]];
+                } else{
+                    NSLog(@"Please input number 1-5");
+                }
             
+            } else if ([input isEqualToString:@"reset"]){
+                [gc resetDice];
+            }
         }
     }
     return 0;

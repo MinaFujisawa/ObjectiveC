@@ -10,5 +10,6 @@
 
 @interface Dice : NSObject
 @property NSInteger currentValue;
+@property NSString *currentValueSymbol;
 @property BOOL isHeld;
 @end

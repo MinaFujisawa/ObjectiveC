@@ -12,4 +12,7 @@
 @property (nonatomic, strong) NSMutableArray *diceArr;
 @property (nonatomic, strong) NSMutableArray *heldDiceArr;
 - (void) holdDie:(NSInteger)i;
+-(void) resetDice;
+-(void) printRolled;
+-(void) printHeld;
 @end
