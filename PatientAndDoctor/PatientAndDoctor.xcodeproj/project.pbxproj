@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		093DF61D1F5272C4003B02E1 /* Hospital.m in Sources */ = {isa = PBXBuildFile; fileRef = 093DF61C1F5272C4003B02E1 /* Hospital.m */; };
 		09D1AABC1F52302C009BF718 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D1AABB1F52302C009BF718 /* main.m */; };
 		09D1AAC41F52306B009BF718 /* Doctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D1AAC31F52306B009BF718 /* Doctor.m */; };
 		09D1AAC71F5232FD009BF718 /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D1AAC61F5232FD009BF718 /* Patient.m */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		093DF61B1F5272C4003B02E1 /* Hospital.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hospital.h; sourceTree = "<group>"; };
+		093DF61C1F5272C4003B02E1 /* Hospital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hospital.m; sourceTree = "<group>"; };
 		09D1AAB81F52302C009BF718 /* PatientAndDoctor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PatientAndDoctor; sourceTree = BUILT_PRODUCTS_DIR; };
 		09D1AABB1F52302C009BF718 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09D1AAC21F52306B009BF718 /* Doctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Doctor.h; sourceTree = "<group>"; };
@@ -68,6 +71,8 @@
 				09D1AAC61F5232FD009BF718 /* Patient.m */,
 				09D1AAC21F52306B009BF718 /* Doctor.h */,
 				09D1AAC31F52306B009BF718 /* Doctor.m */,
+				093DF61B1F5272C4003B02E1 /* Hospital.h */,
+				093DF61C1F5272C4003B02E1 /* Hospital.m */,
 			);
 			path = PatientAndDoctor;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09D1AAC71F5232FD009BF718 /* Patient.m in Sources */,
+				093DF61D1F5272C4003B02E1 /* Hospital.m in Sources */,
 				09D1AAC41F52306B009BF718 /* Doctor.m in Sources */,
 				09D1AABC1F52302C009BF718 /* main.m in Sources */,
 			);
@@ -260,6 +266,7 @@
 				09D1AAC11F52302C009BF718 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
