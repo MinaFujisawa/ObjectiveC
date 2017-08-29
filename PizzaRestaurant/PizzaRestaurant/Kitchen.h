@@ -12,5 +12,6 @@
 @interface Kitchen : NSObject
 
 - (Pizza *)makePizzaWithSize:(PizzaSizeEnum)size toppings:(NSArray *)toppings;
+- (Pizza *)makePizzaWithName:(NSString*)pizzaName;
 
 @end

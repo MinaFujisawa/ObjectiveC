@@ -20,9 +20,13 @@
     return self;
 }
 
+
 -(NSString*) getPizzaSize
 {
     return [self pizzaSizeEnumToString:*(self.pizzaSize)];
+}
+-(NSArray*) getToppings{
+    return _toppings;
 }
 
 -(NSString*) pizzaSizeEnumToString:(PizzaSizeEnum)enumVal

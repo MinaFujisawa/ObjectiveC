@@ -34,14 +34,17 @@ int main(int argc, const char * argv[])
             
             
             // Take the first word of the command as the size, and the rest as the toppings
-            NSString *size = [[inputString componentsSeparatedByString:@" "] objectAtIndex:0];
-            PizzaSizeEnum sizeEnum = (PizzaSizeEnum)[size pizzaSizeEnumFromString];
-            inputString = [inputString substringFromIndex:size.length+1];
-            
-            NSArray* toppingsArray = [inputString componentsSeparatedByString:@" "];
-            
-            // And then send some message to the kitchen...
-            [restaurantKitchen makePizzaWithSize:sizeEnum toppings:toppingsArray];
+            NSArray *commandString = [inputString componentsSeparatedByString:@" "];
+            if(commandString.count == 1){
+                NSString* pizzaName = [commandString objectAtIndex:0];
+                [restaurantKitchen makePizzaWithName:pizzaName];
+            } else{
+                NSString *size = [commandString objectAtIndex:0];
+                PizzaSizeEnum sizeEnum = (PizzaSizeEnum)[size pizzaSizeEnumFromString];
+                inputString = [inputString substringFromIndex:size.length+1];
+                NSArray* toppingsArray = [inputString componentsSeparatedByString:@" "];
+                [restaurantKitchen makePizzaWithSize:sizeEnum toppings:toppingsArray];
+            }
         }
 
     }
