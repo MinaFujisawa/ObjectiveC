@@ -11,6 +11,7 @@
 #import "Kitchen.h"
 #import "Pizza.h"
 
+
 int main(int argc, const char * argv[])
 {
 
@@ -31,19 +32,16 @@ int main(int argc, const char * argv[])
             inputString = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             NSLog(@"Input was %@", inputString);
             
-            NSString* size = [[inputString componentsSeparatedByString:@" "] objectAtIndex:0];
-            PizzaSizeEnum sizeEnum = [size pizzaSizeEnumFromString];
-            inputString = [inputString substringFromIndex:size.length];
-            
-            NSArray* toppingsArray = [inputString componentsSeparatedByString:@" "];
-            Pizza *pizza1 = [[Pizza alloc] initWith:&sizeEnum toppings:toppingsArray];
-            NSLog(@"pizza size:%@", pizza1.getPizzaSize);
-            
             
             // Take the first word of the command as the size, and the rest as the toppings
-            NSArray *commandWords = [inputString componentsSeparatedByString:@" "];
+            NSString *size = [[inputString componentsSeparatedByString:@" "] objectAtIndex:0];
+            PizzaSizeEnum sizeEnum = (PizzaSizeEnum)[size pizzaSizeEnumFromString];
+            inputString = [inputString substringFromIndex:size.length+1];
+            
+            NSArray* toppingsArray = [inputString componentsSeparatedByString:@" "];
             
             // And then send some message to the kitchen...
+            [restaurantKitchen makePizzaWithSize:sizeEnum toppings:toppingsArray];
         }
 
     }

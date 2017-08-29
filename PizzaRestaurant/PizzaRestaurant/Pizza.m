@@ -24,10 +24,6 @@
 {
     return [self pizzaSizeEnumToString:*(self.pizzaSize)];
 }
--(NSArray*) getToppings
-{
-    return self.toppings;
-}
 
 -(NSString*) pizzaSizeEnumToString:(PizzaSizeEnum)enumVal
 {
@@ -39,7 +35,21 @@
 {
     NSArray *imageTypeArray = [[NSArray alloc] initWithObjects:pizzaSizeTextList];
     NSUInteger n = [imageTypeArray indexOfObject:strVal];
+//    if(n < 1) n = JPG;
     return (PizzaSizeEnum) n;
+}
+
+@end
+
+@implementation NSString (EnumParser)
+
+- (PizzaSizeEnum)pizzaSizeEnumFromString{
+    NSDictionary<NSString*,NSNumber*> *sizes = @{
+                                                 @"small": @(small),
+                                                 @"medium": @(medium),
+                                                 @"laege": @(large),
+                                                 };
+    return sizes[self].integerValue;
 }
 
 @end
