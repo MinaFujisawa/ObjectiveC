@@ -16,10 +16,20 @@
         self.pizzaSize = size;
         self.toppings = [NSMutableArray array];
         self.toppings = toppings;
+        [self printPizzaStatus];
     }
     return self;
 }
 
+-(void) printPizzaStatus{
+    NSString *size = [self pizzaSizeEnumToString:*(self.pizzaSize)];
+    NSLog(@"This pizza is:");
+    NSLog(@"Size: %@", size);
+    NSLog(@"Topping:");
+    for (NSString* topping in self.toppings) {
+        NSLog(@"%@", topping);
+    }
+}
 
 -(NSString*) getPizzaSize
 {
@@ -51,7 +61,7 @@
     NSDictionary<NSString*,NSNumber*> *sizes = @{
                                                  @"small": @(small),
                                                  @"medium": @(medium),
-                                                 @"laege": @(large),
+                                                 @"large": @(large),
                                                  };
     return sizes[self].integerValue;
 }

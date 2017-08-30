@@ -10,6 +10,8 @@
 
 #import "Kitchen.h"
 #import "Pizza.h"
+#import "Manager.h"
+#import "Manager2.h"
 
 
 int main(int argc, const char * argv[])
@@ -17,20 +19,39 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool {
         
-        NSLog(@"Please pick your pizza size and toppings:");
+        
         
         Kitchen *restaurantKitchen = [Kitchen new];
+        Manager *manager1 = [Manager new];
+        Manager2 *manager2 = [Manager2 new];
         
         while (TRUE) {
             // Loop forever
             
             NSLog(@"> ");
+            NSLog(@"Please pick your pizza size and toppings:");
             char str[100];
             fgets (str, 100, stdin);
             
             NSString *inputString = [[NSString alloc] initWithUTF8String:str];
             inputString = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             NSLog(@"Input was %@", inputString);
+            
+            NSLog(@"Select manager: 1-hateAnchovie 2-cheesy 3-none");
+            
+            int selectManager;
+            scanf("%d",&selectManager);
+            //flush
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF);
+            
+            if(selectManager == 1){
+                restaurantKitchen.delegate = manager1;
+            } else if(selectManager == 2){
+                restaurantKitchen.delegate = manager2;
+            } else{
+                restaurantKitchen.delegate = restaurantKitchen;
+            }
             
             
             // Take the first word of the command as the size, and the rest as the toppings
@@ -45,6 +66,7 @@ int main(int argc, const char * argv[])
                 NSArray* toppingsArray = [inputString componentsSeparatedByString:@" "];
                 [restaurantKitchen makePizzaWithSize:sizeEnum toppings:toppingsArray];
             }
+            
         }
 
     }
