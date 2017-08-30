@@ -11,20 +11,29 @@
 @implementation Kitchen
 
 - (Pizza *)makePizzaWithSize:(PizzaSizeEnum)size toppings:(NSArray *)toppings{
+    Pizza *pizza = nil;
     if([self.delegate kitchen:self shouldMakePizzaOfSize:size andToppings:toppings]){
         if([self.delegate kitchenShouldUpgradeOrder:self]){
             PizzaSizeEnum large = [@"large" pizzaSizeEnumFromString];
             NSLog(@"should be large!");
-            return [[Pizza alloc] initWith:&large toppings:toppings];
+            pizza = [[Pizza alloc] initWith:&large toppings:toppings];
+            if ([self.delegate respondsToSelector:@selector(kitchenDidMakePizza:)]) {
+                [self.delegate kitchenDidMakePizza:pizza];
+            }
         } else{
             NSLog(@"normal pizza");
-            return [[Pizza alloc] initWith:&size toppings:toppings];
+            pizza = [[Pizza alloc] initWith:&size toppings:toppings];
+            if ([self.delegate respondsToSelector:@selector(kitchenDidMakePizza:)]) {
+                [self.delegate kitchenDidMakePizza:pizza];
+            }
         }
     } else{
         NSLog(@"Refused to make the pizza");
-        return nil;
     }
+    return pizza;
 }
+
+
 - (Pizza *)makePizzaWithName:(NSString*)pizzaName{
     if([pizzaName isEqualToString:@"largePepperoni"]){
         return [[self class] largePepperoni];
@@ -39,6 +48,12 @@
 
 - (BOOL)kitchen:(Kitchen *)kitchen shouldMakePizzaOfSize:(PizzaSizeEnum)size andToppings:(NSArray *)toppings{
     return YES;
+}
+
+- (void)kitchenDidMakePizza:(Pizza *)pizza {
+    if(pizza != nil){
+        NSLog(@"Kitchen did make pizza");
+    }
 }
 
 

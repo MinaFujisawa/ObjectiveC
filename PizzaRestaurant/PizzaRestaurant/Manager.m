@@ -7,8 +7,11 @@
 //
 
 #import "Manager.h"
+#import "DeliveryService.h"
+
 
 @implementation Manager
+
 - (BOOL) kitchen:(Kitchen *)kitchen shouldMakePizzaOfSize:(PizzaSizeEnum)size andToppings:(NSArray *)toppings{
     BOOL hasNoAnchovie = YES;
     for (NSString* topping in toppings) {
@@ -24,5 +27,26 @@
 
 - (BOOL) kitchenShouldUpgradeOrder:(Kitchen *)kitchen{
     return NO;
+}
+
+- (void)kitchenDidMakePizza:(Pizza *)pizza {
+    if(pizza != nil){
+        static DeliveryService *ds = nil;
+        if(ds == nil){
+            ds = [DeliveryService new];
+        }
+        NSLog(@"Kitchen did make pizza");
+        
+        //Add delivered list
+        [ds addDeliveredList];
+        
+        //display delivered list
+        NSLog(@"Delivered list:");
+        for (NSString* desc in ds.getDeliveredList) {
+            NSLog(@"%@", desc);
+        }
+        
+        [ds deliverPizza:pizza];
+    }
 }
 @end
