@@ -10,6 +10,7 @@
 		092A7A561F590D1B00741417 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 092A7A551F590D1B00741417 /* main.m */; };
 		092A7A5E1F590E3F00741417 /* InputHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 092A7A5D1F590E3F00741417 /* InputHandler.m */; };
 		092A7A611F590FBA00741417 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 092A7A601F590FBA00741417 /* Player.m */; };
+		092A7A641F5CDFCD00741417 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 092A7A631F5CDFCD00741417 /* PlayerManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		092A7A5D1F590E3F00741417 /* InputHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputHandler.m; sourceTree = "<group>"; };
 		092A7A5F1F590FBA00741417 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		092A7A601F590FBA00741417 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		092A7A621F5CDFCD00741417 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
+		092A7A631F5CDFCD00741417 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,8 @@
 				092A7A551F590D1B00741417 /* main.m */,
 				092A7A5F1F590FBA00741417 /* Player.h */,
 				092A7A601F590FBA00741417 /* Player.m */,
+				092A7A621F5CDFCD00741417 /* PlayerManager.h */,
+				092A7A631F5CDFCD00741417 /* PlayerManager.m */,
 				092A7A5C1F590E3F00741417 /* InputHandler.h */,
 				092A7A5D1F590E3F00741417 /* InputHandler.m */,
 			);
@@ -131,6 +136,7 @@
 			files = (
 				092A7A561F590D1B00741417 /* main.m in Sources */,
 				092A7A611F590FBA00741417 /* Player.m in Sources */,
+				092A7A641F5CDFCD00741417 /* PlayerManager.m in Sources */,
 				092A7A5E1F590E3F00741417 /* InputHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

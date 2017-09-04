@@ -8,17 +8,29 @@
 
 #import <Foundation/Foundation.h>
 #import "InputHandler.h"
-#import "Player.h"
+#import "PlayerManager.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Player *player = [Player new];
+        PlayerManager *pm = [PlayerManager new];
         
+        //set number of players
+        NSLog(@"type number of players");
+        NSString* numString;
+        numString = [InputHandler getString];
+        while (![numString intValue]){
+            NSLog(@"please type number");
+            numString = [InputHandler getString];
+        }
+        [pm createPlayers:[numString integerValue]];
+        
+        //game
         NSLog(@"type 'roll' or 'r' ");
         while(1){
             NSString* input = [InputHandler getString];
             if([input isEqualToString:@"roll"] || [input isEqualToString:@"r"]){
-                [player roll];
+                [pm roll];
+                [pm output];
             }
         }
     }

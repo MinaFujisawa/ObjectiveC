@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface Player : NSObject
+@property (nonatomic) NSString* name;
 @property (nonatomic) NSInteger currentSquare;
 @property  (nonatomic) NSDictionary* gameLogic;
 @property BOOL gameOver;
 - (void) roll;
+- (void) output : (NSString*) name;
 @end

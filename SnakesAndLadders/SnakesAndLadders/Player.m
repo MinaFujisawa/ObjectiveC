@@ -7,8 +7,12 @@
 //
 
 #import "Player.h"
+NSInteger dice = 0;
+NSInteger keyInt = 0;
+
 
 @implementation Player
+
 - (instancetype)init
 {
     self = [super init];
@@ -21,8 +25,8 @@
 }
 - (void) roll{
     NSInteger keyInt = 0;
-    NSInteger ran = arc4random_uniform(6)+1;
-    self.currentSquare += ran;
+    dice = arc4random_uniform(6)+1;
+    self.currentSquare += dice;
     
     if([self.gameLogic objectForKey:[NSNumber numberWithInteger:self.currentSquare]]){
         NSNumber *key = [NSNumber numberWithInteger:self.currentSquare];
@@ -33,25 +37,24 @@
     if(self.currentSquare > 100){
         self.gameOver = YES;
     }
-    [self output:ran forKey:keyInt];
 }
 
-- (void) output: (NSInteger) dice forKey : (NSInteger) key {
+- (void) output : (NSString*) name{
     if(self.gameOver){
         NSLog(@"Finished!");
     } else {
-        NSLog(@"You rolled a %ld", dice);
+        NSLog(@"%@ rolled a %ld", name, dice);
         
         //Special point
-        if(key > 0){
-            if(key < self.currentSquare){
-                NSLog(@"Bonus! You jusmped from %ld to %ld", key, self.currentSquare);
+        if(keyInt > 0){
+            if(keyInt < self.currentSquare){
+                NSLog(@"Bonus! %@ jusmped from %ld to %ld", name, keyInt, self.currentSquare);
             } else{
-                NSLog(@"Bummer! You moved back to %ld from %ld", self.currentSquare, key);
+                NSLog(@"Bummer! %@ moved back to %ld from %ld", name, self.currentSquare, keyInt);
             }
-        //Normal
+            //Normal
         } else{
-            NSLog(@"You landed on %ld", self.currentSquare);
+            NSLog(@"%@ landed on %ld", name, self.currentSquare);
         }
     }
 }
